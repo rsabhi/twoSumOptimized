@@ -24,6 +24,14 @@
 // step 4: IF NOT, check if(number[i]+number[j] > target) then --j
 // step 5: IF NOT, check if(number[i]+number[j] > target) then --i
 
+// reference:
+// use the pair template it will be look like the following:
+/*
+ struct pair {
+    int first;
+    int second;
+ };
+ */
 
 
 using namespace std;
@@ -31,6 +39,27 @@ class sumIndices {
 public:
     vector<int> number_Sum(vector<int>& number, int target) {
         
+        vector< pair<int, int> > SortNum;
+        for(int i = 0; i<number.size(); i++) {
+            pair<int, int> temp(number[i], i);
+            SortNum.push_back(temp);
+        }
+        
+        // Now lets sort number ARRAY
+        sort(number.begin(), number.end());
+        
+        int i = 0;
+        int j = number.size() - 1;
+        while (i<j) {
+            if(SortNum[i].first + SortNum[j].first == target) {
+                vector<int> res{SortNum[i].second, SortNum[j].second};
+                return res;
+            } else if (SortNum[i].first + SortNum[j].first > target) {
+                --j;
+            } else {
+                ++i;
+            }
+        }
         
         
         
@@ -38,8 +67,15 @@ public:
         return result;
     }
 };
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    vector<int> nums {2, 7, 11, 15};
+    vector<int> indices;
+    
+    sumIndices mysln;
+    indices =  mysln.number_Sum(nums, 17);
+    
+    // output format will be [0, 3]
+    cout<< "["<<indices[0] <<", "<< indices[1]<<"]";
     return 0;
 }
