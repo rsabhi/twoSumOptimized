@@ -17,6 +17,7 @@
 #include <iostream>
 #include <vector>
 
+// step 0: Before we sort, we need to keep the number's index in the array. During sorting the original index will change.
 // step 1: Sort all the numbers
 // step 2: then set i = 0 and j = n-1
 // step 3: check if (number[i]+number[j] == target) then return {i,j}
@@ -29,7 +30,7 @@ using namespace std;
 class sumIndices {
 public:
     vector<int> number_Sum(vector<int>& number, int target) {
-        //
+        
         
         
         
