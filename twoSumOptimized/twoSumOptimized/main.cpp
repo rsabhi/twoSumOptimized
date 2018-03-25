@@ -49,7 +49,7 @@ public:
         sort(number.begin(), number.end());
         
         int i = 0;
-        int j = number.size() - 1;
+        int j = (int) number.size() - 1;
         while (i<j) {
             if(SortNum[i].first + SortNum[j].first == target) {
                 vector<int> res{SortNum[i].second, SortNum[j].second};
